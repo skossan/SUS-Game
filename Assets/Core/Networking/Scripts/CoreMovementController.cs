@@ -62,7 +62,7 @@ namespace Core.Networking.Scripts
         
             // Gets the new direction that the GameObject should move in
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-
+//Applies gravity at a constant rate TODO: Add clamp to avoid infinite gravity. (add terminal velocity)
             moveDirection.y = _verticalSpeed;
             
             _characterController.Move(new Vector3(moveDirection.x, moveDirection.y, moveDirection.z).normalized * (speed * Time.deltaTime));
