@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 
 namespace Core.Logging
 {
     /// <summary>
-    /// Core Logging specifically made for this Core system
+    /// Core Logging specifically made for the Core system
     /// </summary>
     public static class CoreLogging
     {
@@ -17,9 +18,19 @@ namespace Core.Logging
             LogError($"Missing GameObject {typeof(T)}. Please add a {typeof(T)} GameObject to the {parent.name}");
         }
 
-        private static void LogError(string message)
+        public static void LogError(string message)
         {
-            Debug.LogError($"CORE-WARNING: {message}");
+            Debug.LogError($"CORE-ERROR: {message}");
+        }
+
+        public static void LogWarning(string message)
+        {
+            Debug.LogWarning($"CORE-WARNING: {message}");
+        }
+
+        public static void Log(string message)
+        {
+            Debug.Log($"CORE-LOG: {message}");
         }
     }
 }
