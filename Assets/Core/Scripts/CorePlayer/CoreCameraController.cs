@@ -1,10 +1,9 @@
-using System;
 using Cinemachine;
 using Core.Logging;
 using FishNet.Object;
 using UnityEngine;
 
-namespace Core.Networking.Scripts
+namespace Core.Scripts.CorePlayer
 {
     [AddComponentMenu("CoreSystem/CoreCameraController")]
     public class CoreCameraController : NetworkBehaviour

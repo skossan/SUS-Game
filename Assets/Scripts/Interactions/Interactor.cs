@@ -1,6 +1,7 @@
+using FishNet.Object;
 using UnityEngine;
 
-public class Interactor : MonoBehaviour
+public class Interactor : NetworkBehaviour
 {
     [SerializeField]
     private Transform feeler;
@@ -25,6 +26,9 @@ public class Interactor : MonoBehaviour
 
         // Check if anything is in front of the feeler
         Ray ray = new(feeler.position, feeler.forward);
+        
+        Debug.DrawRay(feeler.position, feeler.forward, Color.red);
+        
         RaycastHit hitInfo;
         if (!Physics.Raycast(ray, out hitInfo, GetFeelerLength(), feelerLayerMask))
             return;
@@ -42,6 +46,10 @@ public class Interactor : MonoBehaviour
 
     void Update()
     {
+        if (!IsOwner)
+        {
+            return;
+        }
         CheckFeeler();
     }
     public void Interact()
